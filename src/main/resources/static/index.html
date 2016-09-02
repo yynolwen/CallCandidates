@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="app" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="app" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="app" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="app" class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Easy RDV</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/app.css">
+</head>
+
+<body class="ng-cloak" ng-controller="PersonInfoController as ctrl">
+<div class="generic-container">
+    <div class="panel panel-default">
+        <div class="panel-heading"><span class="lead">Candidate Registration Form </span></div>
+        <div class="formcontainer">
+            <form ng-submit="ctrl.submit()" name="myForm" class="form-horizontal">
+                <input type="hidden" ng-model="ctrl.candidate.id"/>
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="col-md-2 control-lable" for="file">First Name</label>
+                        <div class="col-md-7">
+                            <input type="text" ng-model="ctrl.candidate.prenom" name="prenom" class="username form-control input-sm" placeholder="Enter candidate's first name" required ng-minlength="3"/>
+ <!--                           <div class="has-error" ng-show="myForm.$dirty">
+                                <span ng-show="myForm.uname.$error.required">This is a required field</span>
+                                <span ng-show="myForm.uname.$error.minlength">Minimum length required is 3</span>
+                                <span ng-show="myForm.uname.$invalid">This field is invalid </span>
+                            </div>-->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="col-md-2 control-lable" for="file">Last Name</label>
+                        <div class="col-md-7">
+                            <input type="text" ng-model="ctrl.candidate.nom" name="nom" class="username form-control input-sm" placeholder="Enter candidate's last name" required ng-minlength="3"/>
+<!--                            <div class="has-error" ng-show="myForm.$dirty">
+                                <span ng-show="myForm.uname.$error.required">This is a required field</span>
+                                <span ng-show="myForm.uname.$error.minlength">Minimum length required is 3</span>
+                                <span ng-show="myForm.uname.$invalid">This field is invalid </span>
+                            </div>-->
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="col-md-2 control-lable" for="file">Phone</label>
+                        <div class="col-md-7">
+                            <input type="text" ng-model="ctrl.candidate.phone" class="form-control input-sm" placeholder="Enter candidate's phone number"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="col-md-2 control-lable" for="file">Specialiste</label>
+                        <select class="form-control" placeholder="Choose the specialiste" required ng-model="ctrl.candidate.specialiste">
+                            <option ng-repeat="specialiste in ctrl.specialistes">{{specialiste.specialiste}}</option>
+                        </select>
+                        <!--<div class="col-md-7">
+                            <input type="email" ng-model="ctrl.user.email" name="email" class="email form-control input-sm" placeholder="Enter your Email" required/>
+                            <div class="has-error" ng-show="myForm.$dirty">
+                                <span ng-show="myForm.email.$error.required">This is a required field</span>
+                                <span ng-show="myForm.email.$invalid">This field is invalid </span>
+                            </div>
+                        </div>-->
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-actions floatRight">
+                        <input type="submit"  value="{{!ctrl.candidate.id ? 'Add' : 'Update'}}" class="btn btn-primary btn-sm" ng-disabled="myForm.$invalid">
+                        <button type="button" ng-click="ctrl.reset()" class="btn btn-warning btn-sm" ng-disabled="myForm.$pristine">Reset Form</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading"><span class="lead">List of Candidates </span></div>
+        <div class="tablecontainer">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Phone number</th>
+                    <th>Specialiste</th>
+                    <th>RDV</th>
+                    <th width="20%"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="candidate in ctrl.candidates">
+                    <th scope="row">{{candidate.id}}</th>
+                    <td>{{candidate.prenom}}</td>
+                    <td>{{candidate.nom}}</td>
+                    <td>{{candidate.phone}}</td>
+                    <td>{{candidate.specialiste}}</td>
+                    <td><button type="button" ng-click="ctrl.changeStatusRDV(candidate)">{{candidate.rdv}}</button></td>
+                    <td>
+                        <button type="button" ng-click="ctrl.makeCall(candidate)" class="btn btn-success custom-width">Call</button>
+                        <button type="button" ng-click="ctrl.remove(candidate)" class="btn btn-danger custom-width">Remove</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<script src="/webjars/angularjs/1.4.9/angular.js"></script>
+<script src="/webjars/angularjs/1.4.9/angular-resource.js"></script>
+<script src="/webjars/angularjs/1.4.9/angular-route.js"></script>
+<script src="/js/app.js"></script>
+<script src="/js/controller.js"></script>
+<link rel="stylesheet" href="/webjars/bootstrap/3.3.6/css/bootstrap.css">
+</body>
+</html>

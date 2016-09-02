@@ -1,0 +1,25 @@
+<div class="section">
+    <h3>{{headingTitle}}</h3>
+    <table class="table table-bordered" >
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Phone number</th>
+            <th>Specialiste</th>
+            <th>RDV</th>
+        </tr>
+        </thead>
+        <tbody >
+        <tr ng-repeat="candidate in candidates">
+            <th scope="row">{{candidate.id}}</th>
+            <td>{{candidate.prenom}}</td>
+            <td>{{candidate.nom}}</td>
+            <td>{{candidate.phone}}</td>
+            <td>{{candidate.specialiste}}</td>
+            <td>{{candidate.rdv}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>

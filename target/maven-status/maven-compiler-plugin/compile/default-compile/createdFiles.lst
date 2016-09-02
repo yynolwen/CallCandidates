@@ -1,0 +1,10 @@
+com/javacodegeeks/examples/controller/MakeTwilioRestCall.class
+com/javacodegeeks/examples/controller/CandidateWs.class
+com/javacodegeeks/examples/object/Candidate.class
+com/javacodegeeks/examples/object/Specialiste.class
+com/javacodegeeks/examples/controller/CandidateManagementController.class
+com/javacodegeeks/examples/dao/CandidateDao.class
+com/javacodegeeks/examples/service/TwilioCallService.class
+com/javacodegeeks/examples/controller/Example.class
+com/javacodegeeks/examples/MainController.class
+com/javacodegeeks/examples/WebAppInitializer.class
