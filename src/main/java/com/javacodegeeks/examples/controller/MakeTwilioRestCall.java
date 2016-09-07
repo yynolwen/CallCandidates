@@ -15,7 +15,7 @@ public class MakeTwilioRestCall {
 // Outgoing Caller ID previously validated with Twilio
         String CallerID = "+33975182833 ";
         String ToCall = "+33788212380";
-        String Url="http://ospieafrpf.cluster006.ovh.net/twilio/record1.xml";
+        String Url="http://twimlets.com/message?Message%5B0%5D=Hello%20from%20my%20java%20application.&Message%5B1%5D=http%3A%2F%2Fcom.twilio.music.electronica.s3.amazonaws.com%2Fteru_-_110_Downtempo_Electronic_4.mp3";
 // Instantiate a new Twilio Rest Client
         TwilioRestClient client = new TwilioRestClient(AccountSid, AuthToken, null);
 //build map of post parameters
