@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Response>
+	<Say>Hi, i'll redirect the call</Say>
+    <Dial>+33659169713</Dial>
+    <Redirect>http://ospieafrpf.cluster006.ovh.net/twilio/test.xml</Redirect>
+</Response>

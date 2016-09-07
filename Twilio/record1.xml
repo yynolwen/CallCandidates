@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Response>
+
+    <Say>
+
+        Please leave a message at the beep. 
+
+        Press the star key when finished. 
+
+    </Say>
+
+    <Record
+
+        action="http://ospieafrpf.cluster006.ovh.net/twilio/test.xml"
+
+        method="GET"
+
+        maxLength="20"
+
+        finishOnKey="*"
+
+		transcribe="true"
+        />
+
+    <Say>I did not receive a recording</Say>
+
+</Response>
