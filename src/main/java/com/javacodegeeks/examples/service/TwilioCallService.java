@@ -35,6 +35,7 @@ public class TwilioCallService {
         Map params = new HashMap();
         params.put("From", CallerID);
         params.put("To", candidate.getPhone());
+        params.put("IfMachine","Continue");
 
 
         PrintWriter writer = null;
@@ -47,9 +48,14 @@ public class TwilioCallService {
         }
         writer.println("<?xml version='1.0' encoding='UTF-8'?>");
         writer.println("<Response>");
-        writer.println("<Say voice='alice' language='fr-FR'>Bonjour," + candidate.getNom() + " " + candidate.getPrenom() + ", votre profil " + candidate.getSpecialiste() + " nous intéresse. ");
-        writer.println("Veuillez laisser vortre message après un beep. Appuyer sur le bouton étoile quand vous avez fini.</Say>");
-        writer.println("<Record action='http://ospieafrpf.cluster006.ovh.net/twilio/test.xml' method='POST' finishOnKey='*' transcribe='true' transcribeCallback='http://ospieafrpf.cluster006.ovh.net/twilio/callback.php'/>");
+        writer.println("<Say voice='alice' language='fr-FR'>Bonjour," + candidate.getPrenom() /*+ " " + candidate.getPrenom() */+ ", votre profil " + candidate.getSpecialiste() + " nous a tiré notre attention. </Say> ~");
+//        writer.println("Veuillez laisser vortre message après un beep. Appuyer sur le bouton étoile quand vous avez fini.</Say>");
+//        writer.println("<Record action='http://ospieafrpf.cluster006.ovh.net/twilio/wtRecord.php' maxLength='8' transcribe='true' transcribeCallback='http://ospieafrpf.cluster006.ovh.net/twilio/callback.php'/>");
+        writer.println("<Gather numDigits='1' action='http://ospieafrpf.cluster006.ovh.net/twilio/dialOspiea.php' method='POST'> " +
+                        "<Say voice='alice' language='fr-FR'>" +
+                        "Nous somme la société Ospiea, si vous voulez nous discuter, appuyer sur 1." +
+                        "</Say>" +
+                        "</Gather>");
         writer.println("<Say voice='alice' language='fr-FR'>Merci," + candidate.getNom() + " " + candidate.getPrenom() + ", Au revoir !</Say>");
         writer.println("</Response>");
         writer.close();
@@ -60,7 +66,7 @@ public class TwilioCallService {
 
         try {
             ftpClient.connect("ftp.cluster006.hosting.ovh.net");
-            ftpClient.login("ospieafrpf", "JjGh5HdHHqB9");
+                ftpClient.login("ospieafrpf", "JjGh5HdHHqB9");
 
             boolean success = ftpClient.changeWorkingDirectory("/www/twilio");
             //
@@ -90,7 +96,7 @@ public class TwilioCallService {
 
 
 
-        String Url = "http://ospieafrpf.cluster006.ovh.net/twilio/try.xml";
+        String Url = "http://ospieafrpf.cluster006.ovh.net/twilio/answeredBy.php?name="+candidate.getPrenom()+"&specialiste="+candidate.getSpecialiste();
 
         params.put("Url", Url);
 

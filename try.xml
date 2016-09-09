@@ -1,7 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <Response>
-<Say voice='alice' language='fr-FR'>Bonjour,Monkey.D Luffy, votre profil AngularJS nous intéresse. 
-Veuillez laisser vortre message après un beep. Appuyer sur le bouton étoile quand vous avez fini.</Say>
-<Record action='http://ospieafrpf.cluster006.ovh.net/twilio/test.xml' method='POST' finishOnKey='*' transcribe='true' transcribeCallback='http://ospieafrpf.cluster006.ovh.net/twilio/callback.php'/>
+<Say voice='alice' language='fr-FR'>Bonjour,Luffy, votre profil AngularJS nous a tiré notre attention. </Say> ~
+<Gather numDigits='1' action='http://ospieafrpf.cluster006.ovh.net/twilio/dialOspiea.php' method='POST'> <Say voice='alice' language='fr-FR'>Nous somme la société Ospiea, si vous voulez nous discuter, appuyer sur 1.</Say></Gather>
 <Say voice='alice' language='fr-FR'>Merci,Monkey.D Luffy, Au revoir !</Say>
 </Response>
